@@ -61,6 +61,11 @@ export const fetchRestaurants = async ({
 	}
 }
 
+export const addRestaurants = async ({ searchTerm, offset }) => {
+	const { businesses: newBusinesses } = await fetchRestaurants({ searchTerm, offset });
+	return newBusinesses;
+}
+
 export const initMap = (mapElementId) => {
 	const mapEl = document.getElementById(mapElementId);
 
@@ -71,5 +76,12 @@ export const initMap = (mapElementId) => {
 		});
 	}
 
+	return null;
+}
+
+export const createMap = () => {
+	if (window.google && window.google.maps) {
+		return initMap('places-map');
+	}
 	return null;
 }

@@ -48,28 +48,44 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+---
+## frontend-challenge-maps notes
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### completed features
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- [x] three buttons which allow you to switch/toggle between different types of restaurants in Berlin
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [x] `markers` placed on the map for each of the restaurants
 
-### `yarn eject`
+- [x] `infowindow` events attached to the `markers` which provide additional details on the restaurant including:
+  - image
+  - name
+  - address
+  - price
+  - rating
+  - link to the restaurant's website
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### additional completed features
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [x] Infinite scroll of restaurants list
+  - prevents the need to make massive initial query
+  - querying is deferred until the user actively looks for additional restaurants
+  - queries are chunked into efficient blocks of `10`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- [x] updating of map with new markers and infowindows when user scrolls for additional restaurants
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- [x] retaining previous list position and map locations of restaurants when toggling between restaurant types
+### future improvements
 
-## Learn More
+- [ ] caching of previous searches of restaurants (by type) to prevent redundant queries on page refresh
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [ ] visual highlighting of which restaurant button is currently active
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [ ] implementation of Google Maps API for React [@googlemaps/react-wrapper](https://www.npmjs.com/package/@googlemaps/react-wrapper) and MarkerClusters library [@googlemaps/markerclusterer](https://www.npmjs.com/package/@googlemaps/react-wrapper) to optimize drawing and rendering of collections of restaurants
+
+- [ ] Cleaner, more informative loading state for Infinite Scroll during fetching of new restaurants.
+
+- [ ] Add test spec file for `Main.js` file.
+  - Currently, the libraries which mock the Google Maps API only provide a limited implementation.
+  - This changed the focus of the test from trying to test the functionality of Main.js to providing a deeply mocked instance of the Maps API.
+  - The focus of Main.js tests should be the efficacy of the component code, not ensuring the functionality of the external libraries used in it's implementation.

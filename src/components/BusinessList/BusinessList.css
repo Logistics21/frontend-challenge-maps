@@ -1,0 +1,17 @@
+.card {
+    object-fit: contain;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    width: 240px;
+    min-height: 350px;
+    margin: 10px;
+}
+
+.restaurant-infoWindow-body {
+    text-align: left;
+}
+
+.restaurant-infoWindow-image {
+    object-fit: contain;
+}
